@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "lib": ["ESNext"],
+        "target": "ESNext", // to resolve and use Class (Class constructor Model cannot be invoked without 'new'), this message doesnt´t show again when this prop is active in EsNext
+        "moduleResolution": "NodeNext", // Class constructor Model cannot be invoked without 'new'
+        "module": "NodeNext", // Class constructor Model cannot be invoked without 'new'
+        "strict": false, // cambiar a tru cuando se tenga mejor comprension de ts
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "declaration": true,
+        "experimentalDecorators": true, // to sequelize detected decorator in the models 
+        "emitDecoratorMetadata": true // to sequelize detected decorator in the models
+    },
+    "include": ["src/**/*.ts"]
+}
