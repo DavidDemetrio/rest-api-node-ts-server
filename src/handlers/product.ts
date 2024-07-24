@@ -65,3 +65,42 @@ export const updateProduct = async (req: Request, res: Response) => {
         console.log(error);
     }
 }
+
+export const updateAvailability = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const product = await Product.findByPk(id);
+
+        if (!product) {
+            return res.status(404).json({
+                error: 'Producto no encontrado!'
+            })
+        }
+
+        // Actualizar el producto
+        await product.update(req.body)
+
+        res.json({ product })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteProduct = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const product = await Product.findByPk(id);
+
+        if (!product) {
+            return res.status(404).json({
+                error: 'Producto no encontrado!'
+            })
+        }
+
+        
+    } catch (error) {
+        console.log(error);
+    }
+}

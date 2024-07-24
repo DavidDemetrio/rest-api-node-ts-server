@@ -2,8 +2,10 @@ import { Router } from "express"
 import { body, param } from "express-validator"
 import {
     createProduct,
+    deleteProduct,
     getProductById,
     getProducts,
+    updateAvailability,
     updateProduct
 } from "./handlers/product"
 import { hanldeInputErrors } from "./middleware"
@@ -29,14 +31,17 @@ router.post('/',
     createProduct
 )
 
-router.put('/:id', updateProduct)
+router.put('/:id',
+    param('id').isInt().withMessage('ID no válido'),
+    hanldeInputErrors,
+    updateProduct
+)
 
-router.patch('/', (req, res) => {
-    res.json('Desde PATCH')
-})
+router.patch('/:id',
+    param('id').isInt().withMessage('ID no válido'),
+    hanldeInputErrors,
+    updateAvailability)
 
-router.delete('/', (req, res) => {
-    res.json('Desde DELETE')
-})
+router.delete('/:id', deleteProduct)
 
 export default router
