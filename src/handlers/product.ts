@@ -39,7 +39,7 @@ export const createProduct = async (req: Request, res: Response) => {
         // Second method: Use methos create from sequelize
         const savedProduct = await Product.create(req.body)
 
-        res.status(200).json({ data: savedProduct })
+        res.status(201).json({ data: savedProduct })
     } catch (error) {
         console.log(error);
     }
@@ -60,7 +60,7 @@ export const updateProduct = async (req: Request, res: Response) => {
         // Actualizar el producto
         await product.update(req.body)
 
-        res.json({ product })
+        res.status(201).json({ product })
     } catch (error) {
         console.log(error);
     }

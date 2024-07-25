@@ -15,7 +15,7 @@ async function connectDB() {
         db.sync({
             // alter: true
         }) // It will add automatticly new models or fields our DB
-        console.log(colors.green.bold("Connection db was successfull!"));
+        // console.log(colors.green.bold("Connection db was successfull!"));
     } catch (err) {
         console.log(err);
         console.log(colors.red.bold("There´s error to connect DB"));
@@ -25,5 +25,8 @@ async function connectDB() {
 connectDB()
 
 server.use('/api/products', router) // use es bueno porque puedes ir versionando los endpoints de tu API
+server.get('/api', (req, res) => {
+    res.json({ msg: 'Desde API' })
+})
 
 export default server
